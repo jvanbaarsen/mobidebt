@@ -14,6 +14,7 @@ gem 'twitter-bootstrap-rails'
 gem 'less-rails'
 gem 'simple_form', '~> 3.0.0.rc'
 gem 'sorcery', '~> 0.8.2'
+gem 'validates_email_format_of'
 
 group :doc do
   gem 'sdoc', require: false

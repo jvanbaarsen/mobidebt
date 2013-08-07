@@ -1,4 +1,17 @@
 Mobidebt::Application.routes.draw do
+
+  root 'sessions#new'
+
+  resources :users
+  get 'sign_up' => 'users#new'
+  post 'sign_up' => 'users#create'
+  get 'dashboard' => 'users#show'
+
+  resource :sessions
+  get 'login' => 'sessions#new'
+  post 'login' => 'sessions#create'
+  get 'logout' => 'sessions#destroy'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -39,7 +52,7 @@ Mobidebt::Application.routes.draw do
   #       get 'recent', on: :collection
   #     end
   #   end
-  
+
   # Example resource route with concerns:
   #   concern :toggleable do
   #     post 'toggle'
