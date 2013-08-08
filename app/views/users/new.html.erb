@@ -1,6 +1,6 @@
 <div class="row">
-  <div class="offset3 span6 well text-center">
-    <h1>Create account</h1>
+  <div class="well text-center">
+    <p class="lead">Please <strong>create an account</strong> to track your debt</p>
     <%= simple_form_for @user, url: sign_up_path do |f| %>
       <%= f.input :name, label: false, wrapper: :append do %>
         <%= f.input_field :name, placeholder: 'Name', class: 'input-xlarge' %>

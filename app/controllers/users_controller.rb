@@ -16,6 +16,15 @@ class UsersController < ApplicationController
     @user = current_user
   end
 
+  def purchase
+    if params[:type] == 'drink'
+      current_user.purchase_drink
+    else
+      current_user.purchase_snack
+    end
+    redirect_to root_path, success: "A #{params[:type]} was purchased, credits deducted"
+  end
+
   private
   def user_params
     params.require(:user).permit(:name, :email, :password)

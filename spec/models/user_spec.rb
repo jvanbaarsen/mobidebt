@@ -20,4 +20,21 @@ describe User do
       expect(user).to be_valid
     end
   end
+
+  describe '.purchase_drink' do
+    it 'deducts 2 credits from the users credits' do
+      user = FactoryGirl.build(:user, credits: 10)
+      user.stub(:save)
+      user.purchase_drink
+      expect(user.credits).to eq(8)
+    end
+  end
+
+  describe '.purchase_snack' do
+    it 'deducts 1 credit from the users credits' do
+      user = FactoryGirl.build(:user, credits: 10)
+      user.purchase_snack
+      expect(user.credits).to eq(9)
+    end
+  end
 end

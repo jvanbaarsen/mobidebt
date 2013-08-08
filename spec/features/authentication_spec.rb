@@ -1,6 +1,5 @@
 require 'spec_helper'
 feature 'Authenticating' do
-  let(:user) {FactoryGirl.create(:user)}
   scenario 'Sign-up with valid information' do
     visit sign_up_path
     fill_in 'user_email', with: 'test@example.com'
@@ -30,5 +29,14 @@ feature 'Authenticating' do
     login_user_post(user.email, 'secret')
     visit login_path
     expect(current_path).to eq(dashboard_path)
+  end
+
+  scenario 'Page should not have logout link when logged out' do
+    visit root_path
+    expect(page.body).not_to have_content('Logout')
+  end
+
+  def user
+    @user ||= FactoryGirl.create(:user)
   end
 end
