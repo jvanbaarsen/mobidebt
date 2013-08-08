@@ -5,6 +5,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    @user.validate_password = true
     if @user.save
       redirect_to login_path, notice: 'Account created! Please login'
     else
@@ -14,6 +15,20 @@ class UsersController < ApplicationController
 
   def show
     @user = current_user
+  end
+
+  def edit
+    @user = current_user
+  end
+
+  def update
+    @user = current_user
+    if @user.update(params.require(:user).permit(:credits))
+      flash[:success] = 'Balance has been updated'
+      redirect_to dashboard_path
+    else
+      render :edit
+    end
   end
 
   def purchase

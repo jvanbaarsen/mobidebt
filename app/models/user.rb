@@ -1,9 +1,11 @@
 class User < ActiveRecord::Base
   authenticates_with_sorcery!
 
+  attr_accessor :validate_password
+
   validates :name, presence: true
   validates :email, presence: true, uniqueness: true, email_format: true
-  validates :password, presence: true
+  validates :password, presence: true, if: :validate_password
   validates :credits, numericality: true
 
   def purchase_drink

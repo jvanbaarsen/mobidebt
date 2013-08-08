@@ -1,5 +1,6 @@
 <div class="well text-center">
   <h1>Credits: <%= colorize_credits(current_user.credits).html_safe %></h1>
+  <%= link_to 'Edit balance', edit_balance_path %>
 </div>
 <%= link_to 'Purchase a drink', purchase_users_path('drink'), class: 'btn btn-large btn-warning' %>
 <%= link_to 'Purchase a snack', purchase_users_path('snack'), class: 'btn btn-large btn-info pull-right' %>

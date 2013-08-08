@@ -4,8 +4,19 @@ describe User do
     it {should validate_presence_of :name}
     it {should validate_presence_of :email}
     it {should validate_uniqueness_of :email}
-    it {should validate_presence_of :password}
     it {should validate_numericality_of :credits}
+
+    it "does not validates password by default" do
+      user = FactoryGirl.build(:user, password: nil)
+      expect(user).to be_valid
+    end
+
+    it 'Validates user when validate_password is set to true' do
+      user = FactoryGirl.build(:user, password: nil)
+      user.validate_password = true
+      expect(user).not_to be_valid
+    end
+
     it "accepts a valid email address" do
       user = FactoryGirl.build(:user)
       expect(user).to be_valid
