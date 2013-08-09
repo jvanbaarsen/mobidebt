@@ -9,7 +9,7 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'unicorn'
-gem 'pg', group: :production
+gem 'sqlite3'
 gem 'twitter-bootstrap-rails'
 gem 'less-rails'
 gem 'simple_form', '~> 3.0.0.rc'
@@ -26,8 +26,4 @@ group :test do
   gem 'shoulda-matchers'
   gem 'capybara'
   gem 'factory_girl_rails'
-end
-
-group :test, :development do
-  gem 'sqlite3'
 end
