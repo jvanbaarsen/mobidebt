@@ -9,14 +9,16 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'unicorn'
-gem 'sqlite3'
 gem 'twitter-bootstrap-rails'
 gem 'less-rails'
 gem 'simple_form', '~> 3.0.0.rc'
 gem 'sorcery', '~> 0.8.2'
 gem 'validates_email_format_of'
 gem 'rails_12factor', group: :production
-gem 'capistrano'
+
+group :production do
+  gem 'pg'
+end
 
 group :doc do
   gem 'sdoc', require: false
@@ -27,4 +29,8 @@ group :test do
   gem 'shoulda-matchers'
   gem 'capybara'
   gem 'factory_girl_rails'
+end
+
+group :development, :test do
+  gem 'sqlite3'
 end
