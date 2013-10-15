@@ -1,9 +1,16 @@
 require 'spec_helper'
 feature 'Credit Management' do
-  scenario 'When i log in as a user with 30 credits, the page says i have 30 credits' do
+  scenario 'When i log in as a user with 30 drink credits, the page says i have 30 drink credits' do
+    user = FactoryGirl.create(:user, drink_credits: 30)
     login_user_post(user.email, 'secret')
     visit root_path
-    expect(page.body).to have_content('Credits: 30')
+    expect(page.body).to have_content('Drink credits: 30')
+  end
+
+  scenario 'When i log in as a user with 10 snack credits, the page says i have 10 snack credits' do
+    login_user_post(user.email, 'secret')
+    visit root_path
+    expect(page.body).to have_content('Snack credits: 10')
   end
 
   scenario 'When positive credits, the credit amount should be green' do
@@ -13,26 +20,26 @@ feature 'Credit Management' do
   end
 
   scenario 'When negative credits, the credit amount should be red' do
-    user = FactoryGirl::create(:user, credits: -10)
+    user = FactoryGirl::create(:user, drink_credits: -10)
     login_user_post(user.email, 'secret')
     visit root_path
     expect(page.body).to have_selector('.text-error')
   end
 
-  scenario 'When i buy a can, the counter should say 2 credits less' do
+  scenario 'When i buy a can, the counter should say 1 credits less' do
     login_user_post(user.email, 'secret')
     visit root_path
-    expect(page.body).to have_content('Credits: 30')
+    expect(page.body).to have_content('Drink credits: 20')
     click_link 'Purchase a drink'
-    expect(page.body).to have_content('Credits: 28')
+    expect(page.body).to have_content('Drink credits: 19')
   end
 
-  scenario 'When i buy a snack, the counter should say 1 credit less' do
+  scenario 'When i buy a snack, the counter should say 1 snack credit less' do
     login_user_post(user.email, 'secret')
     visit root_path
-    expect(page.body).to have_content('Credits: 30')
+    expect(page.body).to have_content('Snack credits: 10')
     click_link 'Purchase a snack'
-    expect(page.body).to have_content('Credits: 29')
+    expect(page.body).to have_content('Snack credits: 9')
   end
 
   scenario 'Editing your balance' do
@@ -40,14 +47,16 @@ feature 'Credit Management' do
     visit root_path
     click_link 'Edit balance'
     expect(current_path).to eq(edit_balance_path)
-    fill_in 'user_credits', with: 100
+    fill_in 'user_snack_credits', with: 100
+    fill_in 'user_drink_credits', with: 90
     click_button 'Save balance'
     user.reload
-    expect(user.credits).to eq(100)
+    expect(user.snack_credits).to eq(100)
+    expect(user.drink_credits).to eq(90)
     expect(page.body).to have_content('Balance has been updated')
   end
 
   def user
-    @user ||= FactoryGirl::create(:user, credits: 30)
+    @user ||= FactoryGirl::create(:user)
   end
 end

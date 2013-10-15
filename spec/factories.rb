@@ -6,7 +6,8 @@ FactoryGirl.define do
     password 'secret'
     salt "asdasdasdasd1234adsasd"
     crypted_password Sorcery::CryptoProviders::BCrypt.encrypt("secret", "asdasdasdasd1234adsasd")
-    credits 10
+    drink_credits 20
+    snack_credits 10
   end
 end
 

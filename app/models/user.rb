@@ -6,14 +6,15 @@ class User < ActiveRecord::Base
   validates :name, presence: true
   validates :email, presence: true, uniqueness: true, email_format: true
   validates :password, presence: true, if: :validate_password
-  validates :credits, numericality: true
+  validates :snack_credits, numericality: true
+  validates :drink_credits, numericality: true
 
   def purchase_drink
-    self.update_attribute(:credits, self[:credits] - 2)
+    self.update_attribute(:drink_credits, self[:drink_credits] - 1)
   end
 
   def purchase_snack
-    self.update_attribute(:credits, self[:credits] - 1)
+    self.update_attribute(:snack_credits, self[:snack_credits] - 1)
   end
 
 end

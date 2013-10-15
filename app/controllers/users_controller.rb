@@ -23,7 +23,7 @@ class UsersController < ApplicationController
 
   def update
     @user = current_user
-    if @user.update(params.require(:user).permit(:credits))
+    if @user.update(params.require(:user).permit([:snack_credits, :drink_credits]))
       flash[:success] = 'Balance has been updated'
       redirect_to dashboard_path
     else

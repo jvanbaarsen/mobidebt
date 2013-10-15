@@ -4,7 +4,8 @@ describe User do
     it {should validate_presence_of :name}
     it {should validate_presence_of :email}
     it {should validate_uniqueness_of :email}
-    it {should validate_numericality_of :credits}
+    it {should validate_numericality_of :snack_credits}
+    it {should validate_numericality_of :drink_credits}
 
     it "does not validates password by default" do
       user = FactoryGirl.build(:user, password: nil)
@@ -33,19 +34,18 @@ describe User do
   end
 
   describe '.purchase_drink' do
-    it 'deducts 2 credits from the users credits' do
-      user = FactoryGirl.build(:user, credits: 10)
-      user.stub(:save)
+    it 'deducts 1 credits from the users drink credits' do
+      user = FactoryGirl.build(:user, drink_credits: 10)
       user.purchase_drink
-      expect(user.credits).to eq(8)
+      expect(user.drink_credits).to eq(9)
     end
   end
 
   describe '.purchase_snack' do
-    it 'deducts 1 credit from the users credits' do
-      user = FactoryGirl.build(:user, credits: 10)
+    it 'deducts 1 credit from the users snack credits' do
+      user = FactoryGirl.build(:user, snack_credits: 10)
       user.purchase_snack
-      expect(user.credits).to eq(9)
+      expect(user.snack_credits).to eq(9)
     end
   end
 end

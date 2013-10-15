@@ -1,6 +1,7 @@
 <%= simple_form_for @user do |f| %>
-  <%= f.input :credits %>
+  <%= f.input :drink_credits %>
+  <%= f.input :snack_credits %>
   <%= button_tag(type: 'submit', class: 'btn btn-success pull-right') do %>
-    <i class="icon-arrow-right"></i> Save balance 
+    <i class="icon-arrow-right"></i> Save balance
   <% end %>
 <% end %>

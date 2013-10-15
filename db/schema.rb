@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130807171449) do
+ActiveRecord::Schema.define(version: 20131015183439) do
 
   create_table "users", force: true do |t|
     t.string   "email"
@@ -21,6 +21,8 @@ ActiveRecord::Schema.define(version: 20130807171449) do
     t.integer  "credits",          default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "drink_credits",    default: 0
+    t.integer  "snack_credits",    default: 0
   end
 
 end
