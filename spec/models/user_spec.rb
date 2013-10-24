@@ -48,4 +48,23 @@ describe User do
       expect(user.snack_credits).to eq(9)
     end
   end
+
+  describe '#drink_to_money' do
+    it 'converts 10 credits to 6 euro' do
+      user = FactoryGirl.build(:user, drink_credits: 10)
+      expect(user.drink_to_money).to eq(6)
+    end
+
+    it 'convert 13 credits to 7.8 euro' do
+      user = FactoryGirl.build(:user, drink_credits: 13)
+      expect(user.drink_to_money).to eq(7.8)
+    end
+  end
+
+  describe '#snack_to_money' do
+    it 'converts 10 snack credits to 5 euro' do
+      user = FactoryGirl.build(:user, snack_credits: 10)
+      expect(user.snack_to_money).to eq(5)
+    end
+  end
 end

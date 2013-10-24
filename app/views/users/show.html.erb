@@ -1,6 +1,6 @@
 <div class="well text-center">
-  <h1>Drink credits: <%= colorize_credits(current_user.drink_credits).html_safe %></h1>
-  <h1>Snack credits: <%= colorize_credits(current_user.snack_credits).html_safe %></h1>
+  <h1>Drink credits: <%= colorize_credits(current_user.drink_credits).html_safe %> <span class="small">(<%= number_to_currency(current_user.drink_to_money, unit: '&euro;') %>)</span></h1>
+  <h1>Snack credits: <%= colorize_credits(current_user.snack_credits).html_safe %> <span class="small">(<%= number_to_currency(current_user.snack_to_money, unit: '&euro;') %>)</span></h1>
   <%= link_to 'Edit balance', edit_balance_path %>
 </div>
 <%= link_to 'Purchase a drink', purchase_users_path('drink'), class: 'btn btn-large btn-warning' %>
