@@ -55,8 +55,17 @@ feature 'Credit Management' do
     expect(user.drink_credits).to eq(90)
     expect(page.body).to have_content('Balance has been updated')
   end
+end
 
-  def user
-    @user ||= FactoryGirl::create(:user)
+feature 'Credit overview' do
+  scenario 'When i visit the overview page, i wanna see a list of all the users with their debt' do
+    login_user_post(user, 'secret')
+    FactoryGirl.create(:user, snack_credits: -5, drink_credits: -3, name: 'Johny', email: 'jonhy@example.com')
+    visit users_path
+    expect(page.body).to have_content('Johny')
   end
+end
+
+def user
+  @user ||= FactoryGirl::create(:user)
 end
