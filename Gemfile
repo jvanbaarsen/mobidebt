@@ -16,6 +16,7 @@ gem 'sorcery', '~> 0.8.2'
 gem 'validates_email_format_of'
 gem 'rails_12factor', group: :production
 gem 'newrelic_rpm'
+gem 'keen'
 
 group :production do
   gem 'pg'
