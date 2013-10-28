@@ -28,4 +28,7 @@ class User < ActiveRecord::Base
     self.snack_credits * SNACK_COSTS
   end
 
+  def total_credits_to_money
+    drink_to_money + snack_to_money
+  end
 end

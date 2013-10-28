@@ -13,6 +13,13 @@ feature 'Credit Management' do
     expect(page.body).to have_content('Snack credits: 10')
   end
 
+  scenario 'When i log in as a user with -10 snack and drink credits, the page should say i have a debt of 11 EURO' do
+    user = FactoryGirl.create(:user, snack_credits: -10, drink_credits: -10)
+    login_user_post(user.email, 'secret')
+    visit root_path
+    expect(page.body).to have_content('Total: -€11.00')
+  end
+
   scenario 'When positive credits, the credit amount should be green' do
     login_user_post(user.email, 'secret')
     visit root_path
