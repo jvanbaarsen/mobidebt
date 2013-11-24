@@ -9,7 +9,6 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'unicorn'
-gem 'twitter-bootstrap-rails'
 gem 'less-rails'
 gem 'simple_form', '~> 3.0.0.rc'
 gem 'sorcery', '~> 0.8.2'
@@ -17,6 +16,9 @@ gem 'validates_email_format_of'
 gem 'rails_12factor', group: :production
 gem 'newrelic_rpm'
 gem 'keen'
+gem 'twitter-bootswatch-rails', '~> 3.0.1'
+gem 'twitter-bootswatch-rails-helpers'
+gem "font-awesome-rails"
 
 group :production do
   gem 'pg'
@@ -36,4 +38,5 @@ end
 group :development, :test do
   gem 'sqlite3'
   gem 'puma'
+  gem 'quiet_assets'
 end

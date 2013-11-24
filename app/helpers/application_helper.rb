@@ -3,7 +3,7 @@ module ApplicationHelper
     if credits >= 0
       %Q{<span class="text-success">#{credits}</span>}
     else
-      %Q{<span class="text-error">#{credits}</span>}
+      %Q{<span class="text-danger">#{credits}</span>}
     end
   end
 end

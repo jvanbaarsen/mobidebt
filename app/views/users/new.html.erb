@@ -1,30 +1,24 @@
 <div class="row">
   <div class="well text-center">
     <p class="lead">Please <strong>create an account</strong> to track your debt</p>
-    <%= simple_form_for @user, url: sign_up_path do |f| %>
-      <%= f.input :name, label: false, wrapper: :append do %>
-        <%= f.input_field :name, placeholder: 'Name', class: 'input-xlarge' %>
-        <%= content_tag :span, "", :class => "icon-user add-on" %>
-      <% end %>
-      <%= f.input :email, label: false, wrapper: :append do %>
-        <%= f.input_field :email, placeholder: 'Email', class: 'input-xlarge' %>
-        <%= content_tag :span, "", :class => "icon-envelope-alt add-on" %>
-      <% end %>
-      <%= f.input :password, label: false, wrapper: :append do %>
-        <%= f.password_field :password, placeholder: 'Password', class: 'input-xlarge' %>
-        <%= content_tag :span, "", :class => "icon-asterisk add-on" %>
-      <% end %>
-      <div class="control-group span4 remove-margin clearfix" style="margin-left: 85px;">
-        <div class="pull-left">
-          <%= link_to "Login", login_path%>
+      <%= form_for @user, url: sign_up_path do |f| %>
+        <div class="input-group form-group <%= "has-error" if @user.errors[:email].present? %>">
+          <%= f.text_field :email, class: 'form-control', placeholder: 'Email' %>
+          <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
         </div>
-        <div class="btn-group pull-right">
-          <%= button_tag(type: 'submit', class: 'btn btn-success pull-right') do %>
-            <i class="icon-arrow-right"></i> Sign up
-          <% end %>
+        <div class="input-group form-group <%= "has-error" if @user.errors[:password].present? %>">
+          <%= f.password_field :password, class: 'form-control', placeholder: 'Password' %>
+          <span class="input-group-addon"><i class="fa fa-unlock"></i></span>
         </div>
-      </div>
-
-    <% end %>
+        <div class="input-group form-group <%= "has-error" if @user.errors[:password].present? %>">
+          <%= f.password_field :password_confirmation, class: 'form-control', placeholder: 'Confirm password' %>
+          <span class="input-group-addon"><i class="fa fa-unlock"></i></span>
+        </div>
+        <div class="form-group">
+          <%= button_tag "Sign Up", class: 'btn btn-block btn-info' %>
+        </div>
+        <%= link_to "Allready have an account? Log in here", login_path%>
+      <% end %>
   </div>
 </div>
+
