@@ -8,7 +8,7 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 gem 'bcrypt-ruby', '~> 3.0.0'
-gem 'puma'
+gem 'unicorn'
 gem 'less-rails'
 gem 'simple_form', '~> 3.0.0.rc'
 gem 'sorcery', '~> 0.8.2'
@@ -37,5 +37,6 @@ end
 
 group :development, :test do
   gem 'sqlite3'
+  gem 'puma'
   gem 'quiet_assets'
 end
