@@ -19,6 +19,8 @@ gem 'keen'
 gem 'twitter-bootswatch-rails', '~> 3.0.1'
 gem 'twitter-bootswatch-rails-helpers'
 gem "font-awesome-rails"
+gem 'capistrano', '3.1'
+gem 'capistrano-rails', '~> 1.1'
 
 group :production do
   gem 'pg'
