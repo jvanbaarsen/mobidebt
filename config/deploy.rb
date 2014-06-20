@@ -2,7 +2,7 @@
 lock '3.1.0'
 
 set :application, 'mobidebt'
-set :repo_url, 'git@github.com:jvanbaarsen/mobidebt.git'
+set :repo_url, 'https://github.com/jvanbaarsen/mobidebt.git'
 
 # Default branch is :master
 ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }
